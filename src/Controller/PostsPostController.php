@@ -16,16 +16,15 @@ class PostsPostController
     {
         $parameters = json_decode($request->getContent(), true);
         try {
-            $command = new CreatePostCommand(
-                $parameters['id'],
+            $command = new CreatePostCommand(                
                 $parameters['title'],
                 $parameters['body'],
                 //$parameters['author_id']
             );
-            $handler->__invoke($command);
+           $post = $handler->__invoke($command);
             $response = new JsonResponse([
                 'status' => 'ok',
-                'message' => 'Post was created'
+                'message' => $post->toArray()
             ], Response::HTTP_CREATED);
         } catch (\Throwable $th) {
             throw new \Exception($th->getMessage(), 1);            

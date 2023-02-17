@@ -21,7 +21,7 @@ final class PostCreator {
     }
 
     public function __invoke(PostId $id, PostTitle $title, PostBody $body) : PostResponse
-    {
+    {        
         $post = new Post($id,$title,$body);
         $this->postRepository->save($post);
         return new PostResponse($post);

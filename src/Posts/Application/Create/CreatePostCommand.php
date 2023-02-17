@@ -6,8 +6,7 @@ namespace App\Posts\Application\Create;
 
 final class CreatePostCommand
 {
-    public function __construct(
-        private readonly string $id,
+    public function __construct(        
         private readonly string $title,
         private readonly string $body,
         //private readonly int $authorId
@@ -21,12 +20,6 @@ final class CreatePostCommand
         return $this->authorId;
     }
     */
-
-    
-    public function id(): string
-    {
-        return $this->id;
-    }
     
     public function title(): string
     {
