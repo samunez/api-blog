@@ -18,7 +18,7 @@ final class InMemoryPostsRepository implements PostRepository {
     {
         $arrayPosts  = $readPosts->fetchPostsByLength(10);
         $postsConverter = new PostsConverter($arrayPosts);
-        $this->posts = $postsConverter->toArray();
+        $this->posts = $postsConverter->convert();
         $this->postCollection = $postCollection;
         foreach($this->posts as $post){
             $this->postCollection->add($post);
@@ -26,7 +26,7 @@ final class InMemoryPostsRepository implements PostRepository {
     }
 
     public function all(): PostCollection
-    {   
+    {         
         return $this->postCollection;
     }
 

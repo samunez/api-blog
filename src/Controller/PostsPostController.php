@@ -19,7 +19,7 @@ class PostsPostController
             $command = new CreatePostCommand(                
                 $parameters['title'],
                 $parameters['body'],
-                //$parameters['author_id']
+                $parameters['author_id']
             );
            $post = $handler->__invoke($command);
             $response = new JsonResponse([
@@ -27,7 +27,10 @@ class PostsPostController
                 'message' => $post->toArray()
             ], Response::HTTP_CREATED);
         } catch (\Throwable $th) {
-            throw new \Exception($th->getMessage(), 1);            
+            $response = new JsonResponse([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ],RESPONSE::HTTP_BAD_REQUEST);
         }
         return $response;
     }
