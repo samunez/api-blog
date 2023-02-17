@@ -27,4 +27,12 @@ final class Author
     {
         return $this->id;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id()->value(),
+            'name' => $this->name()->value()
+        ];
+    }
 }

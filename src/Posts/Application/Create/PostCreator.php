@@ -25,10 +25,10 @@ final class PostCreator {
 
     public function __invoke(PostId $id, PostTitle $title, PostBody $body,AuthorId $authorId) : PostResponse
     {
-        $this->authorFinder->__invoke($authorId);
+        $author = $this->authorFinder->__invoke($authorId);
         $post = new Post($id,$title,$body,$authorId);
         $this->postRepository->save($post);
-        return new PostResponse($post);
+        return new PostResponse($post,$author);
     }
 
 }

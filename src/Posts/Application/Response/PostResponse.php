@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Posts\Application\Response;
 
-
+use App\Authors\Domain\Author;
 use App\Posts\Domain\Post;
 
 
@@ -12,14 +12,14 @@ final class PostResponse
     private string $id;
     private string $title;
     private string $body;
-    private string $authorId;
+    private array $author;
 
-    public function __construct(Post $post)
+    public function __construct(Post $post,Author $author)
     {
         $this->id = $post->id()->value();
         $this->title = $post->title()->value();
         $this->body = $post->body()->value();
-        $this->authorId = $post->authorId()->value();
+        $this->author = $author->toArray(); 
     }
     
     
@@ -41,10 +41,10 @@ final class PostResponse
     {
         return $this->body;
     }
-    
-    public function authorId(): string
+
+    public function author()
     {
-        return $this->authorId;
+        return $this->author;
     }
 
     public function toArray(): array
@@ -53,7 +53,7 @@ final class PostResponse
             'id' => $this->id(),
             'title' => $this->title(),
             'body' => $this->body(),
-            'author_id' => $this->authorId()
+            'author' => $this->author()
         ];
     }
     
