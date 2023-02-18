@@ -3,21 +3,18 @@ declare(strict_types=1);
 
 namespace App\Posts\Application\Response;
 
-use App\Authors\Domain\Author;
-use App\Authors\Domain\AuthorRepository;
-use App\Authors\Domain\ValueObject\AuthorName;
+use App\Authors\Application\AuthorFinder;
 use App\Posts\Domain\PostCollection;
-use App\Shared\Domain\ValueObject\AuthorId;
 
 final class PostCollectionResponse
 {
     private array $posts;
 
-    public function __construct(PostCollection $postCollection,AuthorRepository $authorRepository)
+    public function __construct(PostCollection $postCollection,AuthorFinder $authorFinder)
     {
         
         foreach($postCollection->getCollection() as $post){            
-            $author = $authorRepository->findById($post->authorId());
+            $author = $authorFinder->__invoke($post->authorId());
             $this->posts[] = new PostResponse($post,$author);
         }        
     }

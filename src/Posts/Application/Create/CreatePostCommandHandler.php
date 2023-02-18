@@ -19,7 +19,7 @@ final class CreatePostCommandHandler
     }
 
     public function __invoke(CreatePostCommand $command): PostResponse
-    {
+    {        
         $id = new PostId(UuidValueObject::generate());
         $title = new PostTitle($command->title());
         $body = new PostBody($command->body());
