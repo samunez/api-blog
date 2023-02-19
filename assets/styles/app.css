@@ -1,12 +1,16 @@
 body {
-    background-color: lightgray;
+    background-color: #f8f9fa;
 }
 
 header {
-    background-color: azure;
+    background-color: #6dabab;
     font-size: medium;    
 }
 
 header h1 {
     text-align: center;
+    height: 100px;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #f8f9fa;
 }

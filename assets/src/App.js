@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PostList from "./components/PostList";
+import PostDetail from "./pages/Post/PostDetail";
 import {
   BrowserRouter as Router,
   Routes, Route, Link
 } from 'react-router-dom'
-import PostDetail from "./components/PostDetail";
+
 
 
 const App = () =>{
@@ -27,8 +28,8 @@ const App = () =>{
       <Router>
         <Routes>
           <Route path="/posts/:id" element={<PostDetail posts={posts} />} />
+          <Route path="/" element={<PostList posts={posts} />} />
         </Routes>
-        <PostList posts={posts} />
       </Router>        
     )
     
