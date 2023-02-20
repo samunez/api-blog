@@ -4,8 +4,8 @@ Proyecto basado en el diseño DDD
 
 ## Endpoints
 
-    `GET: /api/posts` <br />
-    `POST: /api/posts` <br />
+    `GET: /api/posts`
+    `POST: /api/posts`
 
  **POST request example** 
 
